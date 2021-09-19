@@ -8,10 +8,11 @@ import { ColorSchemeName, Pressable } from 'react-native';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import ModalScreen from '../screens/ModalScreen';
-import TabOneScreen from '../screens/TabOneScreen';
+import HomeScreen from '../screens/HomeScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
+import ProfilePicture from '../components/ProfilePicture';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -31,12 +32,16 @@ function RootNavigator() {
       <Stack.Screen name="HomeScreen"  
         component={BottomTabNavigator} 
         options={{ 
-          headerShown: true,
+          headerShown: true, 
+          headerTitleAlign: 'center',
           headerTitle: () => (
             <TabBarIcon name="twitter" color={Colors.light.tint} />
           ),
           headerRight: () => (
             <MaterialCommunityIcon name="star-four-points-outline" color={Colors.light.tint} />
+          ),
+          headerLeft: () => (
+            <ProfilePicture size={40} image={'https://static.wikia.nocookie.net/782f1edb-fa54-4562-a7c8-612b02b824c7'} />
           )
         }} 
       />
@@ -63,9 +68,9 @@ function BottomTabNavigator() {
       }}>
       <BottomTab.Screen
         name="Home"
-        component={TabOneScreen}
+        component={HomeScreen}
         options={({ navigation }: RootTabScreenProps<'Home'>) => ({
-          title: 'Tab One',
+          title: 'Home',
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} size={24} />,
         })}
       />
@@ -103,17 +108,17 @@ function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
 }) {
-  return <FontAwesome size={20} style={{ marginBottom: -3 }} {...props} />;
+  return <FontAwesome size={25} style={{ marginBottom: -3 }} {...props} />;
 }
 function Ionicon(props: {
   name: React.ComponentProps<typeof Ionicons>['name'];
   color: string;
 }) {
-  return <Ionicons size={20} style={{ marginBottom: -3 }} {...props} />;
+  return <Ionicons size={25} style={{ marginBottom: -3 }} {...props} />;
 }
 function MaterialCommunityIcon(props: {
   name: React.ComponentProps<typeof MaterialCommunityIcons>['name'];
   color: string;
 }) {
-  return <MaterialCommunityIcons size={20} style={{ marginBottom: -3 }} {...props} />;
+  return <MaterialCommunityIcons size={25} style={{ marginBottom: -3 }} {...props} />;
 }
