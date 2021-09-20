@@ -4,14 +4,16 @@ import LeftContainer from "./LeftContainer";
 import MainContainer from "./MainContainer";
 import { TweetType } from "../../types";
 
+import styles from "./styles";
+
 export type TweetProps = {
-    tweet: TweetType,
+  tweet: TweetType;
 };
-const Tweet = ({tweet}: TweetProps) => {
+const Tweet = ({ tweet }: TweetProps) => {
   return (
-    <View>
+    <View style={styles.container} >
       <LeftContainer user={tweet.user} />
-      <MainContainer />
+      <MainContainer tweet={tweet} />
     </View>
   );
 };
