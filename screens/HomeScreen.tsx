@@ -2,14 +2,14 @@ import * as React from 'react';
 import { StyleSheet } from 'react-native';
 
 import { View } from '../components/Themed';
-import Tweet from '../components/Tweet';
-import tweets from '../data/tweets';
-import { RootTabScreenProps } from '../types';
+import Feed from '../components/Feed';
+import NewTweetButton from '../components/NewTweetButton';
 
-export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
+export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Tweet tweet={tweets[0]}/>
+      <Feed/>
+      <NewTweetButton />
     </View>
   );
 }

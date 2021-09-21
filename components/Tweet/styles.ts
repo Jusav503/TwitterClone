@@ -7,6 +7,8 @@ const styles = StyleSheet.create({
         padding: 15,
         borderBottomWidth: 0.5,
         borderColor: "#F2F4F4",
+        paddingBottom: 5,
+        
     },
 });
 

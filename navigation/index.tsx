@@ -1,4 +1,4 @@
-import { FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { FontAwesome, Ionicons, MaterialCommunityIcons, Octicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -71,7 +71,7 @@ function BottomTabNavigator() {
         component={HomeScreen}
         options={({ navigation }: RootTabScreenProps<'Home'>) => ({
           title: 'Home',
-          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} size={24} />,
+          tabBarIcon: ({ color }) => <Octicon name="home" color={color} />,
         })}
       />
       <BottomTab.Screen
@@ -79,7 +79,7 @@ function BottomTabNavigator() {
         component={TabTwoScreen}
         options={{
           title: 'Tab Two',
-          tabBarIcon: ({ color }) => <Ionicon name="search" color={color} />,
+          tabBarIcon: ({ color }) => <Ionicon name="search-outline" color={color} />,
         }}
       />
       <BottomTab.Screen
@@ -87,7 +87,7 @@ function BottomTabNavigator() {
         component={TabTwoScreen}
         options={{
           title: 'Tab Two',
-          tabBarIcon: ({ color }) => <Ionicon name="notifications-outline" color={color} />,
+          tabBarIcon: ({ color }) => <Ionicon name="notifications-outline" color={color} size={22} />,
         }}
       />
       <BottomTab.Screen
@@ -104,21 +104,27 @@ function BottomTabNavigator() {
 
 
 // Icons variables
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
+function Octicon(props: {
+  name: React.ComponentProps<typeof Octicons>['name'];
   color: string;
 }) {
-  return <FontAwesome size={25} style={{ marginBottom: -3 }} {...props} />;
+  return <Octicons size={25} style={{ marginBottom: -2 }} {...props} />;
 }
 function Ionicon(props: {
   name: React.ComponentProps<typeof Ionicons>['name'];
   color: string;
 }) {
-  return <Ionicons size={25} style={{ marginBottom: -3 }} {...props} />;
+  return <Ionicons size={25} style={{ marginBottom: -2 }} {...props} />;
 }
 function MaterialCommunityIcon(props: {
   name: React.ComponentProps<typeof MaterialCommunityIcons>['name'];
   color: string;
 }) {
   return <MaterialCommunityIcons size={25} style={{ marginBottom: -3 }} {...props} />;
+}
+function TabBarIcon(props: {
+  name: React.ComponentProps<typeof FontAwesome>['name'];
+  color: string;
+}) {
+  return <FontAwesome size={25} style={{ marginBottom: -3 }} {...props} />;
 }
