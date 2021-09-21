@@ -3,8 +3,8 @@ const tweets = [
     id: 't1',
     user: {
       id: 'u1',
-      username: 'SavinVadim_',
-      name: 'Vadim Savin',
+      username: 'sr_Jackson',
+      name: 'srJack',
       image: 'https://i.pinimg.com/originals/fd/1b/43/fd1b43e4ae73a3d6205e7bd64784daba.jpg'
     },
     createdAt: '2020-08-27T12:00:00.000Z',
@@ -17,9 +17,9 @@ const tweets = [
     id: 't2',
     user: {
       id: 'u1',
-      username: 'SavinVadim_',
-      name: 'Vadim Savin',
-      image: 'https://scontent.fkiv3-1.fna.fbcdn.net/v/t31.0-8/s960x960/22256588_1932617800312085_5686197942193420542_o.jpg?_nc_cat=110&_nc_sid=85a577&_nc_ohc=svjjE7DUkc0AX9yjcdC&_nc_ht=scontent.fkiv3-1.fna&tp=7&oh=1df4116c73c45a32ebad070704ca3333&oe=5F6ECD77'
+      username: 'Cerreziete7',
+      name: 'CR7Ronaldo',
+      image: 'https://estaticos-cdn.sport.es/clip/24a12ea8-9380-4181-ba6c-dda114a22c30_media-libre-aspect-ratio_default_0.jpg'
     },
     createdAt: '2020-08-27T12:00:00.000Z',
     content: 'Hey Hey Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
@@ -30,12 +30,13 @@ const tweets = [
     id: 't3',
     user: {
       id: 'u1',
-      username: 'SavinVadim_',
-      name: 'Vadim Savin',
-      image: 'https://scontent.fkiv3-1.fna.fbcdn.net/v/t31.0-8/s960x960/22256588_1932617800312085_5686197942193420542_o.jpg?_nc_cat=110&_nc_sid=85a577&_nc_ohc=svjjE7DUkc0AX9yjcdC&_nc_ht=scontent.fkiv3-1.fna&tp=7&oh=1df4116c73c45a32ebad070704ca3333&oe=5F6ECD77'
+      username: 'helonnusk',
+      name: 'Elon Musk',
+      image: 'https://i2-prod.dailystar.co.uk/incoming/article24988683.ece/ALTERNATES/s615/0_Billionaire-Elon-Musk-Receives-Axel-Springer-Award.jpg'
     },
     createdAt: '2020-08-27T12:00:00.000Z',
     content: 'Hello World',
+    image:'https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F602180e81b19f25addada68b%2FValles-Marineris--Mars--illustration%2F960x0.jpg%3FcropX1%3D0%26cropX2%3D5502%26cropY1%3D0%26cropY2%3D3669',
     numberOfComments: 4,
     numberOfRetweets: 11,
     numberOfLikes: 99,
@@ -43,9 +44,9 @@ const tweets = [
     id: 't4',
     user: {
       id: 'u1',
-      username: 'SavinVadim_',
-      name: 'Vadim Savin',
-      image: 'https://scontent.fkiv3-1.fna.fbcdn.net/v/t31.0-8/s960x960/22256588_1932617800312085_5686197942193420542_o.jpg?_nc_cat=110&_nc_sid=85a577&_nc_ohc=svjjE7DUkc0AX9yjcdC&_nc_ht=scontent.fkiv3-1.fna&tp=7&oh=1df4116c73c45a32ebad070704ca3333&oe=5F6ECD77'
+      username: 'spiderCrazy2',
+      name: 'ThorXD',
+      image: 'https://wipy.tv/wp-content/uploads/2020/05/cicatriz-de-peter-parker-en-spider-man-3-1.jpg'
     },
     createdAt: '2020-08-27T12:00:00.000Z',
     content: 'Hey Hey Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
