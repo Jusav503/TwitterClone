@@ -13,6 +13,7 @@ import TabTwoScreen from '../screens/TabTwoScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import ProfilePicture from '../components/ProfilePicture';
+import NewTweetScreen from '../screens/NewTweetcreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -45,6 +46,7 @@ function RootNavigator() {
           )
         }} 
       />
+      <Stack.Screen name="NewTweet" component={NewTweetScreen} options={{headerShown: false}} />
 
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Modal" component={ModalScreen} />

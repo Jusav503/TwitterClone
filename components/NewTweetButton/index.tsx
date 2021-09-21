@@ -1,11 +1,15 @@
-import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity } from "react-native";
 import styles from "./styles";
 
 const NewTweetButton = () => {
+
+  const navigation = useNavigation();
+
   const onPress = () => {
-    console.warn("Hello there");
+    navigation.navigate("NewTweet");
   };
 
   return (

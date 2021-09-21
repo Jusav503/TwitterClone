@@ -18,6 +18,7 @@ declare global {
 
 export type RootStackParamList = {
   HomeScreen: NavigatorScreenParams<RootTabParamList> | undefined;
+  NewTweet:undefined;
   Modal: undefined;
   NotFound: undefined;
 };
