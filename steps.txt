@@ -1,3 +1,5 @@
 amplify init to create newproject
 amplify add auth to create authentification
 npm install aws-amplify aws-amplify-react-native @react-native-community/netinfo @react-native-async-storage/async-storage 
+amplify add api -> to create api conection
+amplify push -> to save in aws
