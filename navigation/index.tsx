@@ -1,8 +1,10 @@
+import { useEffect, useState } from 'react';
 import { FontAwesome, Ionicons, MaterialCommunityIcons, Octicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
+import { API, graphqlOperation } from 'aws-amplify';
 import { ColorSchemeName, Pressable } from 'react-native';
 
 import Colors from '../constants/Colors';
@@ -14,6 +16,7 @@ import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../typ
 import LinkingConfiguration from './LinkingConfiguration';
 import ProfilePicture from '../components/ProfilePicture';
 import NewTweetScreen from '../screens/NewTweetcreen';
+import { getUser } from './graphql/queries';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -28,10 +31,27 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
 // Displaying modals on top of all other content.
 const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const userInfo = await Auth.currentAuthenticatedUser({bypassCache: true});
+      try{
+        const userData = await API.graphql(graphqlOperation(getUser, { id: userInfo.attributes.sub }));
+        if(userData){
+          setUser(userData.data.getUser);
+        }
+      }catch (e) {
+      }
+    }
+    fetchUser();
+  }, [])
+
   return (
     <Stack.Navigator>
       <Stack.Screen name="HomeScreen"  
-        component={BottomTabNavigator} 
+        component={BottomTabNavigator}  
         options={{ 
           headerShown: true, 
           headerTitleAlign: 'center',
@@ -42,7 +62,7 @@ function RootNavigator() {
             <MaterialCommunityIcon name="star-four-points-outline" color={Colors.light.tint} />
           ),
           headerLeft: () => (
-            <ProfilePicture size={40} image={'https://static.wikia.nocookie.net/782f1edb-fa54-4562-a7c8-612b02b824c7'} />
+            <ProfilePicture size={40} image={user?.image} />
           )
         }} 
       />
