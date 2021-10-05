@@ -16,7 +16,7 @@ import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../typ
 import LinkingConfiguration from './LinkingConfiguration';
 import ProfilePicture from '../components/ProfilePicture';
 import NewTweetScreen from '../screens/NewTweetcreen';
-import { getUser } from './graphql/queries';
+import { getUser } from '../graphql/queries';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -34,15 +34,20 @@ function RootNavigator() {
 
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
+  useEffect( () => {
     const fetchUser = async () => {
       const userInfo = await Auth.currentAuthenticatedUser({bypassCache: true});
+      if(!userInfo){
+        return;
+      }
+
       try{
         const userData = await API.graphql(graphqlOperation(getUser, { id: userInfo.attributes.sub }));
         if(userData){
           setUser(userData.data.getUser);
         }
       }catch (e) {
+        console.log(e);
       }
     }
     fetchUser();

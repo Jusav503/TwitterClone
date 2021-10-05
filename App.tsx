@@ -7,7 +7,7 @@ import { withAuthenticator } from "aws-amplify-react-native";
 import useCachedResources from "./hooks/useCachedResources";
 import useColorScheme from "./hooks/useColorScheme";
 import Navigation from "./navigation";
-import config from "./aws-exports";
+import config from "./src/aws-exports";
 import { getUser } from "./graphql/queries";
 import { createUser } from "./graphql/mutations";
 
@@ -18,16 +18,16 @@ function App() {
   const colorScheme = useColorScheme();
 
   const getRandomImage = () => {
-    return "https://i.pinimg.com/originals/fd/1b/43/fd1b43e4ae73a3d6205e7bd64784daba.jpg";
+    return "https://64.media.tumblr.com/651ebdc5fc9a456d74ecdca8d5221c8f/7736be729a570387-93/s1280x1920/7158168af52db3cbf46e2ea106079bb9711c5993.jpg";
   };
   const saveUserToDB = async (user) => {
     await API.graphql(graphqlOperation(createUser, { input: user }));
   };
 
-  useEffect(() => {
+  useEffect( () => {
     const updateUser = async () => {
       //Get current aunthenticated user
-      const userInfo = await Auth.currentAuthenticatedUser({bypassCache: true,});
+      const userInfo = await Auth.currentAuthenticatedUser({ bypassCache: true });
 
       if (userInfo) {
         //Check if user alredy exists in db
