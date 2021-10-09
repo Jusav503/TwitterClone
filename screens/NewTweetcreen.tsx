@@ -59,7 +59,7 @@ export default function NewTweetScreen() {
     <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <EvilIcons name="close" size={34} color={Colors.light.tint} />
+          <EvilIcons name="close" size={35} color={Colors.light.tint} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={onPostTweet}>
           <Text style={styles.buttonText}>Tweet</Text>

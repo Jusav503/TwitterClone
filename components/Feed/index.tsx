@@ -8,16 +8,21 @@ import { listTweets } from "../../graphql/queries";
 const Feed = () => {
 
   const [tweets, setTweets] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const fetchTweets = async () => {
+    setLoading(true);
+    try{
+      const tweetsData = await API.graphql(graphqlOperation(listTweets));
+      setTweets(tweetsData.data.listTweets.items)
+    }catch(e){
+      console.log(e);
+    }finally{
+      setLoading(false);
+    }
+  }
 
   useEffect( () => {
-    const fetchTweets = async () => {
-      try{
-        const tweetsData = await API.graphql(graphqlOperation(listTweets));
-        setTweets(tweetsData.data.listTweets.items)
-      }catch(e){
-        console.log(e);
-      }
-    }
     fetchTweets();
   }, [])
 
@@ -27,6 +32,8 @@ const Feed = () => {
         data={tweets}
         renderItem={({ item }) => <Tweet tweet={item} />}
         keyExtractor={(item) => item.id }
+        refreshing={loading}
+        onRefresh={fetchTweets}
       />
     </View>
   );
