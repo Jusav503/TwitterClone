@@ -1,9 +1,9 @@
 type User @model {
   id: ID!
   username: String!
-  image: String
   name: String!
   email: String!
+  image: String
   tweets: [Tweet] @connection(keyName: "byUser", fields: ["id"])
 }
 
@@ -14,4 +14,3 @@ type Tweet @model @key(name: "byUser", fields: ["userID"]) {
   userID: ID!
   user: User @connection(fields: ["userID"])
 }
-
