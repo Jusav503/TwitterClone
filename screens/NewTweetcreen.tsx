@@ -9,18 +9,40 @@ import { View } from "../components/Themed";
 import Colors from "../constants/Colors";
 import { createTweet } from "../graphql/mutations";
 import { useNavigation } from "@react-navigation/native";
+import { getUser } from "../graphql/queries";
 
 export default function NewTweetScreen() {
   const [tweet, setTweet] = React.useState("");
   const [imageUrl, setImageUrl] = React.useState("");
 
   const navigation = useNavigation();
+  const [user, setUser] = React.useState(null);
+
+  React.useEffect( () => {
+    const fetchUser = async () => {
+      const userInfo = await Auth.currentAuthenticatedUser({bypassCache: true});
+      if(!userInfo){
+        return;
+      }
+
+      try{
+        const userData = await API.graphql(graphqlOperation(getUser, { id: userInfo.attributes.sub }));
+        if(userData){
+          setUser(userData.data.getUser);
+        }
+      }catch (e) {
+        console.log(e);
+      }
+    }
+    fetchUser();
+  }, [])
 
   const onPostTweet = async () => {
     try {
-      const currentUser = await Auth.currentAuthenticatedUser({
-        bypassCache: true,
-      });
+      const currentUser = await Auth.currentAuthenticatedUser({bypassCache: true});
+      if(!currentUser){
+        return;
+      }
       const newTweet = {
         content: tweet,
         image: imageUrl,
@@ -37,7 +59,7 @@ export default function NewTweetScreen() {
     <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <EvilIcons name="close" size={35} color={Colors.light.tint} />
+          <EvilIcons name="close" size={34} color={Colors.light.tint} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={onPostTweet}>
           <Text style={styles.buttonText}>Tweet</Text>
@@ -46,9 +68,7 @@ export default function NewTweetScreen() {
 
       <View style={styles.newTweetContainer}>
         <ProfilePicture
-          image={
-            "https://estaticos-cdn.sport.es/clip/24a12ea8-9380-4181-ba6c-dda114a22c30_media-libre-aspect-ratio_default_0.jpg"
-          }
+          image={user?.image}
         />
         <View style={styles.inputsContainer}>
           <TextInput

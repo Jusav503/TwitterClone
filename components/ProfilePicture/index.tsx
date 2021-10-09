@@ -5,7 +5,7 @@ export type ProfilePictureProps = {
   image?: string;
   size?: number;
 };
-const ProfilePicture = ({ image, size = 50 }: ProfilePictureProps) => (
+const ProfilePicture = ({ image, size = 40 }: ProfilePictureProps) => (
     <Image
     source={{ uri: image || '' }}
     style={{

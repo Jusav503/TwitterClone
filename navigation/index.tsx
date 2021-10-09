@@ -4,8 +4,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { API, graphqlOperation } from 'aws-amplify';
-import { ColorSchemeName, Pressable } from 'react-native';
+import { API, graphqlOperation, Auth } from 'aws-amplify';
+import { ColorSchemeName} from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
@@ -67,7 +67,7 @@ function RootNavigator() {
             <MaterialCommunityIcon name="star-four-points-outline" color={Colors.light.tint} />
           ),
           headerLeft: () => (
-            <ProfilePicture size={40} image={user?.image} />
+            <ProfilePicture image={user?.image} />
           )
         }} 
       />
