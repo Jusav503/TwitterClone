@@ -33,13 +33,19 @@
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 7,
+              "apiKeyExpirationDays": 249,
               "description": "Twitter"
             }
           },
           "additionalAuthenticationProviders": []
         }
       }
+    }
+  },
+  "storage": {
+    "TwitterClone": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation"
     }
   }
 }
