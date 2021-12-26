@@ -1,4 +1,4 @@
-# Replica Twitter home page
+# Replica Twitter home page 📱
 
 <h3>Some features: </h3>
 <ul>
